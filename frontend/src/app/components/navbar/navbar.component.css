@@ -1,0 +1,48 @@
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
+}
+
+.offcanvas-body ul {
+    padding: 0;
+}
+
+.offcanvas-body .list-group-item {
+    display: flex;
+    align-items: center; /* Aligner l'icône et le texte */
+    gap: 10px; /* Espacement entre l'icône et le texte */
+    border: none; /* Supprime les bordures des éléments */
+}
+
+.offcanvas-body .list-group-item a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: black; /* Texte en noir */
+    font-weight: 500; /* Optionnel : rend le texte un peu plus épais */
+}
+
+.offcanvas-body .list-group-item a:hover {
+    color: #555; /* Légère variation au survol */
+}
+
+.offcanvas-body .list-group-item i {
+    font-size: 20px; /* Ajuste la taille des icônes */
+    color: black; /* Icônes en noir */
+}
