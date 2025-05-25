@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../../../services/task.service';
-import { UserService } from '../../../services/user.service';
+import { TaskService } from '../../../services/task/task.service';
+import { UserService } from '../../../services/user/user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -20,16 +20,22 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.loadTasks();
     this.LoadUsers();
+    this.loadTasks();
+
+    
   }
 
   loadTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+    this.taskService.getTasks().subscribe(tasks => {
+      this.tasks = tasks
+    });
   }
 
   LoadUsers(): void {
-    this.userService.getUsers().subscribe(users => this.users = users)
+    this.userService.getUsers().subscribe(users =>{ 
+      this.users = users
+    })
   }
 
   addTask(): void {
@@ -47,6 +53,16 @@ export class TaskListComponent implements OnInit {
   toggleTaskCompletion(task: any): void {
     this.taskService.updateTask(task._id, !task.completed).subscribe(updatedTask => {
       task.completed = updatedTask.completed;
+      console.log(task.completed);
+      if (task.completed) {
+        // Attendre 10 secondes avant de supprimer la tâche
+        setTimeout(() => {
+          this.deleteTask(task._id);
+          window.location.reload();
+        }, 3000); // 10000 millisecondes = 10 secondes
+      }
+    }, error => {
+      console.error('Erreur lors de la mise à jour de la tâche:', error);
     });
   }
 

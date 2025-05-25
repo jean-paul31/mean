@@ -3,13 +3,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: 30px;
     height: 24px;
     border: none;
     background: none;
     cursor: pointer;
     padding: 0;
-    margin-top: 2em;
     margin-left: 2em;
 }
 
@@ -25,24 +25,33 @@
     padding: 0;
 }
 
-.offcanvas-body .list-group-item {
+.offcanvas-body .nav-item {
+    display: flex;
+    align-items: center; /* Aligner l'icône et le texte */
+    gap: 10px; /* Espacement entre l'icône et le texte */
+    border: none; /* Supprime les bordures des éléments */
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.offcanvas-body .navbar-nav {
     display: flex;
     align-items: center; /* Aligner l'icône et le texte */
     gap: 10px; /* Espacement entre l'icône et le texte */
     border: none; /* Supprime les bordures des éléments */
 }
 
-.offcanvas-body .list-group-item a {
+.offcanvas-body .nav-item a {
     text-decoration: none; /* Supprime le soulignement */
     color: black; /* Texte en noir */
     font-weight: 500; /* Optionnel : rend le texte un peu plus épais */
 }
 
-.offcanvas-body .list-group-item a:hover {
+.offcanvas-body .nav-item a:hover {
     color: #555; /* Légère variation au survol */
 }
 
-.offcanvas-body .list-group-item i {
+.offcanvas-body .nav-item i {
     font-size: 20px; /* Ajuste la taille des icônes */
     color: black; /* Icônes en noir */
 }

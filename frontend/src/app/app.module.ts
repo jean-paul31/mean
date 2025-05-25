@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './services/user.service';
-import { TaskService } from './services/task.service';
+import { UserService } from './services/user/user.service';
+import { TaskService } from './services/task/task.service';
+import { AuthService } from "./services/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TaskService } from './services/task.service';
   ],
   providers:[
     UserService,
-    TaskService
+    TaskService,
+    AuthService
   ],
   bootstrap: [
     AppComponent

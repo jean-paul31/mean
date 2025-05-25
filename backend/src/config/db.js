@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/mean_app', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        mongoose.connect('mongodb://localhost:27017/mean_app');
         console.log('✅ MongoDB connecté');
     } catch (error) {
         console.error('❌ Erreur de connexion à MongoDB :', error);

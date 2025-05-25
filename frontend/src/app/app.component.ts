@@ -11,4 +11,10 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 })
 export class AppComponent {
   title = 'meanFront';
+  isUserConnected: boolean = false;
+
+    // Méthode pour mettre à jour l'état de connexion de l'utilisateur
+  updateConnectionStatus(status: boolean): void {
+    this.isUserConnected = status;
+  }
 }

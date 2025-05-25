@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
-import { UserService } from "../../services/user.service";
-import { TaskService } from "../../services/task.service";
+import { UserService } from "../../services/user/user.service";
+import { TaskService } from "../../services/task/task.service";
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class UserListComponent {
   users: any[] = [];
   tasks: any[]= []; // Stocke la liste des utilisateurs
-  newUser = { name: '', email: '' }; // ✅ Définit l'objet pour le formulaire
+  newUser = { name: '', email: '', mdp: '' }; // ✅ Définit l'objet pour le formulaire
 
   constructor(private userService: UserService, private taskService: TaskService) {}
 
@@ -30,8 +30,21 @@ export class UserListComponent {
   }
 
   toggleTaskCompletion(task: any): void {
+    console.log("on annule ! ");
     this.taskService.updateTask(task._id, !task.completed).subscribe(updatedTask => {
       task.completed = updatedTask.completed;
+      console.log(task.completed);
+      if (task.completed) {
+        console.log("on attend ! ");
+        // Attendre 10 secondes avant de supprimer la tâche
+        setTimeout(() => {
+          this.deleteTask(task._id);
+          window.location.reload();
+        }, 10000); // 10000 millisecondes = 10 secondes
+      }
+      console.log("c'est bon c'est supprimé!");      
+    }, error => {
+      console.error('Erreur lors de la mise à jour de la tâche:', error);
     });
   }
 
@@ -63,7 +76,7 @@ export class UserListComponent {
       (user) => {
         console.log("✅ Utilisateur ajouté :", user);
         this.users.push(user); // Met à jour la liste
-        this.newUser = { name: '', email: '' }; // Réinitialise le formulaire
+        this.newUser = { name: '', email: '', mdp: '' }; // Réinitialise le formulaire
       },
       (error) => console.error("❌ Erreur lors de l'ajout de l'utilisateur", error)
     );

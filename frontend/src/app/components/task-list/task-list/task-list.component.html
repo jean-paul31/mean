@@ -17,6 +17,7 @@
                   <option value="">Aucun utilisateur</option>
                   <option *ngFor="let user of users" [value]="user._id">
                     {{ user.name }}
+                    <span *ngIf="!user._id || !user.name">Erreur: Propriété manquante</span>
                   </option>
                 </select>
               

@@ -2,10 +2,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 import { forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Task } from '../models/task.model';
+import { Task } from '../../models/task.model';
 
 @Injectable({
   providedIn: 'root'

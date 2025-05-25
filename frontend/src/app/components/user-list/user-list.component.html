@@ -1,11 +1,12 @@
-<div class="container mt-4">
-  <h2 class="text-center">Liste des utilisateurs</h2>
-</div>
+
 
 <div class="row">
   <div class="col-3"></div>
   <div class="col-6">
-    <div class="mb-3">
+    <div class="container mt-4">
+      <h2 class="text-center">Liste des utilisateurs</h2>
+    </div>
+    <div class="mb-3 form">
       <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="newUser.name">
       <input type="email" class="form-control mt-2" placeholder="Email" [(ngModel)]="newUser.email">
       <button class="btn btn-primary mt-2 w-100" (click)="addUser()">Ajouter</button>
@@ -21,14 +22,15 @@
 
         <!-- Liste des tâches associées -->
         <ul *ngIf="user.tasks && user.tasks.length > 0" class="mt-2 list-group">
-          <li *ngFor="let task of user.tasks" class="list-group-item tasks" [class.text-decoration-line-through]="task.completed">
+          <li *ngFor="let task of user.tasks" class="list-group-item tasks"
+            [class.text-decoration-line-through]="task.completed">
             {{ task.title }}
-            <div>
+            <div id="task_button">
               <button class="btn btn-sm btn-success me-2" (click)="toggleTaskCompletion(task)">
-                  {{ task.completed ? 'Annuler' : 'Terminer' }}
+                {{ task.completed ? 'Annuler' : 'Terminer' }}
               </button>
               <button class="btn btn-sm btn-danger" (click)="deleteTask(task._id)">Supprimer</button>
-          </div>
+            </div>
           </li>
         </ul>
         <p *ngIf="!user.tasks || user.tasks.length === 0" class="text-muted mt-2">Aucune tâche assignée</p>
